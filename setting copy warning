@@ -1,0 +1,32 @@
+import pandas as pd
+def get_data():
+    df = pd.DataFrame({'A': range(0, 5),
+                       'B': range(10, 15),
+                       'C': range(100, 105)})
+    return df
+x=get_data()
+x
+x[x['B']>12]
+x[x['B']>12]['C']=999
+x.loc[x['B']>12]['C']=999
+x.loc[x['B']>12,'C']=999
+
+t1=x.loc[x['C']>100]
+t1.loc[2,'C']=999
+
+t1=x.loc[x['C']>100].copy()
+t1.loc[2,'C']=999
+
+x=get_data()
+x.loc[x['A']>2,'A']=99
+x
+x=get_data()
+x._is_view
+x._is_copy
+y=x.loc[0:1,'C']
+y
+y._is_view,y._is_copy
+z=x.loc[0:2,'B'].copy()
+z._is_view
+z=x.loc[x['A']>2,:]
+z._is_copy
